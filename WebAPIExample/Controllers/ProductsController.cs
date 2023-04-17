@@ -14,11 +14,9 @@ namespace WebAPIExample.Controllers
     public class ProductsController : ControllerBase
     {
         Context db = new Context();
-        [HttpGet("GetList")]
-        public IActionResult GetList() 
+        [HttpGet("[action]")]
+        public IActionResult GetList()
         {
-            
-
             List<Products> products = new List<Products>();
             products = db.ProductsTable.ToList();
             if (products != null)
@@ -27,19 +25,19 @@ namespace WebAPIExample.Controllers
             }
             else
             {
-                return BadRequest(); 
+                return BadRequest();
             }
         }
 
-        [HttpPost("AddProduct")]
-        public IActionResult AddProduct(Products product) 
+        [HttpPost("[action]")]
+        public IActionResult AddProduct(Products product)
         {
             db.Add(product);
             db.SaveChanges();
             return Ok("Adding Product is Succesfully !");
         }
 
-        [HttpGet("DeleteProduct")]
+        [HttpGet("[action]/{id}")]
         public IActionResult DeleteProduct(int id)
         {
             var product = db.ProductsTable.Where(x => x.id == id).FirstOrDefault();
