@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebSiteExample.Models;
 
 namespace WebAPIExample.Model
 {
@@ -12,5 +13,9 @@ namespace WebAPIExample.Model
         {
             optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Faruk;Integrated Security=true"); 
         }
+
+        public DbSet<Products> ProductsTable { get; set; }
+        public DbSet<ShoppingCard> ProductsCard { get; set; }
+
     }
 }
